@@ -8,12 +8,12 @@ test -z "$1" -o -z "$2" -o '!' -d "$1" -o '!' -x "$2" && {
   exit 1
 }
 mkdir report 2> /dev/null
-lcov --no-checksum --zerocounters --directory .
-lcov --no-checksum --capture --initial --directory . --output-file report/trace.lcov_base
+lcov --no-checksum --zerocounters --directory . || exit
+lcov --no-checksum --capture --initial --directory . --output-file report/trace.lcov_base || exit 1
 "$2" "$1"/*
-lcov --no-checksum --capture --directory . --output-file report/trace.lcov_info
-lcov --no-checksum -a report/trace.lcov_base -a report/trace.lcov_info --output-file report/trace.lcov_tmp
-lcov --no-checksum -r report/trace.lcov_tmp /usr/include/\*  --output-file report/trace.lcov_info_final
+lcov --no-checksum --capture --directory . --output-file report/trace.lcov_info || exit 1
+lcov --no-checksum -a report/trace.lcov_base -a report/trace.lcov_info --output-file report/trace.lcov_tmp || exit 1
+lcov --no-checksum -r report/trace.lcov_tmp /usr/include/\*  --output-file report/trace.lcov_info_final || exit 1
 genhtml --output-directory report report/trace.lcov_info_final
 echo
 echo Report: `pwd`/report/index.html

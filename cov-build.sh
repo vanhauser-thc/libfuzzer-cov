@@ -9,5 +9,6 @@ export CC=gcc
 export CXX=g++
 export CFLAGS="-fprofile-arcs -ftest-coverage"
 export CXXFLAGS="$CFLAGS"
+export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-lgcov --coverage"
 $*
