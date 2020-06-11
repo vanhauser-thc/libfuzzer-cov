@@ -5,6 +5,10 @@ what gcc has available.
 
 hence these tools to have gcc coverage on libfuzzer fuzzing targets
 
+NOTE: by default clang/clang++ is used. if you want to use gcc/g++ instead
+then specify the -g option in cov-build.sh and cov-generate.sh, and edit
+cov-compile.sh to use the g++ line instead.
+
 # how-to
 
 ## step 1: build the target
