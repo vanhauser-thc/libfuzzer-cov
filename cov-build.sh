@@ -15,11 +15,13 @@ test "$1" = "-g" && { CLANG= ; shift ; }
 test "$1" = "-c" && { CLANG=yes ; shift ; }
 test "$1" = "-g" && { CLANG= ; shift ; }
 
-test -z "$CC" -a -z "$CLANG" && export CC=gcc
-test -z "$CXX" -a -z "$CLANG" && export CXX=g++
-test -z "$CC" -a -n "$CLANG" && export CC=clang
-test -z "$CXX" -a -n "$CLANG" && export CXX=clang++
+test -z "$CC" -a -z "$CLANG" && CC=gcc
+test -z "$CXX" -a -z "$CLANG" && CXX=g++
+test -z "$CC" -a -n "$CLANG" && CC=clang
+test -z "$CXX" -a -n "$CLANG" && CXX=clang++
 
+test -n "$CC" && export CC
+test -n "$CXX" && export CXX
 export CFLAGS="-fprofile-arcs -ftest-coverage"
 export CXXFLAGS="$CFLAGS"
 export CPPFLAGS="$CFLAGS"
