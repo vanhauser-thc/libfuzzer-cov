@@ -11,9 +11,13 @@ extern "C" int LLVMFuzzerTestOneInput(const unsigned char *data, size_t size) {
 
   return 0;
 }
+// Do not forget LLVMFuzzerInitialize() if you use it an enable it in main()
 */
 
 int main(int argc, char **argv) {
+
+  // uncomment if your harness uses LLVMFuzzerInitialize()
+  //LLVMFuzzerInitialize(NULL, NULL);
 
   for (int i = 1; i < argc; i++) {
 

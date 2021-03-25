@@ -25,7 +25,9 @@ same as the fuzz.cc target to fuzz, we need to have a small to to get the
 coverage. this is easy: simply merge your `fuzz.cc` with
 `coverage-libfuzzer-template.cc` and name it `cov.cc`.
 
-then *edit(!)* `cov-compile.sh` and set the correct `libTARGET.a` and `$LIBS`.
+then *edit(!)* `cov-compile.sh` and set the correct `libTARGET.a` and `$LIBS`
+and `$INCLUDE` this needs to compile. Basically the same you needed to compile
+your fuzzing harness.
 
 afterwards compile `cov.cc` to the `cov` executable with the `cov-compile.sh` command.
 

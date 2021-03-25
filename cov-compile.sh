@@ -5,6 +5,6 @@
 echo this file needs to be modified by hand. read the header.
 exit 1
 # for clang++:
-clang++ -fprofile-arcs -ftest-coverage --coverage -Iinclude/ -o cov cov.cc libfoo.a $LIBS
+clang++ -fprofile-arcs -ftest-coverage --coverage -I. -Iinclude/ -o cov cov.cc $INCLUDES $LIBS
 # for g++:
-#g++ -fprofile-arcs -ftest-coverage -Iinclude/ -o cov cov.cc libfoo.a $LIBS -lgcov --coverage
+#g++ -fprofile-arcs -ftest-coverage -lgcov --coverage -I. -Iinclude/ -o cov cov.cc $INCLUDES $LIBS
