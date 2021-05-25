@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t, size_t);
+
 /*
 // basically insert your libfuzzer testcase in here
 #include "libfoo/foo.h"
