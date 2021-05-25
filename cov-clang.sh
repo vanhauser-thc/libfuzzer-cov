@@ -1,2 +1,3 @@
 #!/bin/sh
-llvm-cov gcov $*
+VER=`echo $CXX|sed 's/clang++//'
+llvm-cov$VER gcov $*

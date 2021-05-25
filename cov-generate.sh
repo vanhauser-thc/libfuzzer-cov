@@ -11,6 +11,7 @@ test -z "$1" -o -z "$2" -o '!' -d "$1" -o '!' -x "$2" && {
 }
 
 CLANG=yes
+echo " $CC $CXX" | grep -q clang && CLANG=yes
 test "$1" = "-g" && { CLANG= ; shift ; }
 test "$1" = "-c" && { CLANG=yes ; shift ; }
 test "$1" = "-g" && { CLANG= ; shift ; }
