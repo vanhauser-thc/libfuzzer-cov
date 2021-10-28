@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
         size_t n_read = fread(buf, 1, len, f);
         fclose(f);
         if (n_read > 0)
-          LLVMFuzzerTestOneInput(buf, len);
+          LLVMFuzzerTestOneInput((const unsigned char*)buf, len);
         free(buf);
 
       }
