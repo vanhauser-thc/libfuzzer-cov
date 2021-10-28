@@ -29,6 +29,6 @@ lcov $OPT --no-checksum --capture --initial --directory . --output-file report/t
 lcov $OPT --no-checksum --capture --directory . --output-file report/trace.lcov_info || exit 1
 lcov $OPT --no-checksum -a report/trace.lcov_base -a report/trace.lcov_info --output-file report/trace.lcov_tmp || exit 1
 lcov $OPT --no-checksum -r report/trace.lcov_tmp /usr/include/\*  --output-file report/trace.lcov_info_final || exit 1
-genhtml --output-directory report report/trace.lcov_info_final
+genhtml --ignore-errors source --output-directory report report/trace.lcov_info_final
 echo
 echo Report: `pwd`/report/index.html

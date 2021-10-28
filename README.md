@@ -21,11 +21,11 @@ $ cov-build.sh ./configure --disable-shared
 
 ## step 2: build the coverage tool
 
-same as the fuzz.cc target to fuzz, we need to have a tool built to to get the
+same as the fuzz.cc harness to fuzz, we need to have a tool built to to get the
 coverage. this is easy:
 
 Execute with your fuzzing harness: `./cov-compile.sh fuzz.cc .libs/libfoo.a -Iinclude -I.` 
-(Basically the same you needed to compile your fuzzing harness.)
+(Basically the same options you needed to compile your fuzzing harness.)
 
 ## step 3: gather the coverage
 
