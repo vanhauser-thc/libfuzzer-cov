@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern "C" int LLVMFuzzerInitialize(int *argc, char ***argv) __attribute__((weak));
 extern "C" int LLVMFuzzerTestOneInput(const unsigned char*, size_t);
 
 /*
@@ -13,13 +14,13 @@ extern "C" int LLVMFuzzerTestOneInput(const unsigned char *data, size_t size) {
 
   return 0;
 }
-// Do not forget LLVMFuzzerInitialize() if you use it an enable it in main()
+// do not forget LLVMFuzzerInitialize() if you use it!
 */
 
 int main(int argc, char **argv) {
 
-  // uncomment if your harness uses LLVMFuzzerInitialize()
-  //LLVMFuzzerInitialize(NULL, NULL);
+  if (LLVMFuzzerInitialize)
+    LLVMFuzzerInitialize(&argc, &argv);
 
   for (int i = 1; i < argc; i++) {
 
@@ -36,7 +37,8 @@ int main(int argc, char **argv) {
 
         size_t n_read = fread(buf, 1, len, f);
         fclose(f);
-        LLVMFuzzerTestOneInput(buf, len);
+        if (n_read > 0)
+          LLVMFuzzerTestOneInput(buf, len);
         free(buf);
 
       }
