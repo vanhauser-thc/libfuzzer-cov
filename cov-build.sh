@@ -22,7 +22,7 @@ test -z "$CXX" -a -n "$CLANG" && CXX=clang++
 
 test -n "$CC" && export CC
 test -n "$CXX" && export CXX
-export CFLAGS="-fprofile-arcs -ftest-coverage"
+export CFLAGS="-fprofile-arcs -ftest-coverage -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION"
 export CXXFLAGS="$CFLAGS"
 export CPPFLAGS="$CFLAGS"
 test -z "$CLANG" && export LDFLAGS="-lgcov --coverage"

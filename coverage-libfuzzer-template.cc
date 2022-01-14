@@ -19,12 +19,15 @@ extern "C" int LLVMFuzzerTestOneInput(const unsigned char *data, size_t size) {
 
 int main(int argc, char **argv) {
 
-  if (LLVMFuzzerInitialize)
+  if (LLVMFuzzerInitialize) {
+
+    fprintf(stderr, "Running LLVMFuzzerInitialize ...\n");
     LLVMFuzzerInitialize(&argc, &argv);
+
+  }
 
   for (int i = 1; i < argc; i++) {
 
-    fprintf(stderr, "Running: %s (%d/%d)\n", argv[i], i, argc - 1);
     FILE *f = fopen(argv[i], "r");
     if (f) {
 
@@ -37,8 +40,14 @@ int main(int argc, char **argv) {
 
         size_t n_read = fread(buf, 1, len, f);
         fclose(f);
-        if (n_read > 0)
+
+        if (n_read > 0) {
+
+          fprintf(stderr, "Running: %s (%d/%d) %zu bytes\n", argv[i], i, argc - 1, n_read);
           LLVMFuzzerTestOneInput((const unsigned char*)buf, len);
+
+        }
+
         free(buf);
 
       }
