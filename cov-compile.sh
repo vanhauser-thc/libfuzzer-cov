@@ -9,7 +9,7 @@ test -z "$CXX" && CXX=clang++
 export CXX
 # for clang++:
 echo if this fails, perform the necessary changes by hand:
-echo $CXX -fprofile-arcs -ftest-coverage --coverage -I. -Iinclude/ -o cov $INCLUDES $LIBS $LOCATION/coverage-libfuzzer-template.cc $*
-$CXX -fprofile-arcs -ftest-coverage --coverage -I. -Iinclude/ -o cov $INCLUDES $LIBS $LOCATION/coverage-libfuzzer-template.cc $*
+echo $CXX -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fprofile-arcs -ftest-coverage --coverage -I. -Iinclude/ -o cov $INCLUDES $LIBS $LOCATION/coverage-libfuzzer-template.cc $*
+$CXX -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fprofile-arcs -ftest-coverage --coverage -I. -Iinclude/ -o cov $INCLUDES $LIBS $LOCATION/coverage-libfuzzer-template.cc $*
 # for g++:
-#g++ -fprofile-arcs -ftest-coverage -lgcov --coverage -I. -Iinclude/ -o cov cov.cc $INCLUDES $LIBS
+#g++ -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fprofile-arcs -ftest-coverage -lgcov --coverage -I. -Iinclude/ -o cov cov.cc $INCLUDES $LIBS
