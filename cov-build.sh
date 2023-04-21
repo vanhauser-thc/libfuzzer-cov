@@ -2,10 +2,12 @@
 
 test -z "$1" -o "$1" = "-h" && {
   echo "Syntax: $0 [-c|-g] <command> [options]"
+  echo
   echo "Sets build options for coverage instrumentation with gcov/lcov."
   echo "Set CC/CXX environment variables if you do not want clang/clang++."
   echo "Specify the -c parameter if you want to use clang/clang++ (default)."
   echo "Specify the -g parameter if you want to use gcc/g++ instead."
+  echo
   echo "Example: $0 ./configure --disable-shared"
   exit 1
 }

@@ -1,6 +1,7 @@
 #!/bin/sh
-test -z "$1" -o -z "$2" -o '!' -d "$1" -o '!' -x "$2" && { 
+test -z "$1" -o -z "$2" && {
   echo "Syntax: $0 [-g|-c] queue-dir cmd"
+  echo
   echo "this generates the coverage information."
   echo "must be run in the top source code directory"
   echo "Specify -g if gcc/g++ was used to compile the target"
@@ -15,6 +16,9 @@ echo " $CC $CXX" | grep -q clang && CLANG=yes
 test "$1" = "-g" && { CLANG= ; shift ; }
 test "$1" = "-c" && { CLANG=yes ; shift ; }
 test "$1" = "-g" && { CLANG= ; shift ; }
+
+test -d "$1" || { echo Error: directory $1 does not exist; exit 1; }
+test -x "$2" || { echo Error: $2 is not an executable; exit 1; }
 
 OPT=
 test -n "$CLANG" && OPT="--gcov-tool cov-clang.sh"

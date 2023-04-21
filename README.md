@@ -25,7 +25,8 @@ same as the fuzz.cc harness to fuzz, we need to have a tool built to to get the
 coverage. this is easy:
 
 Execute with your fuzzing harness: `./cov-compile.sh fuzz.cc .libs/libfoo.a -Iinclude -I.` 
-(Basically the same options you needed to compile your fuzzing harness.)
+
+Basically the same options you needed to compile your fuzzing harness but omit `-o outputfile`.
 
 ## step 3: gather the coverage
 
