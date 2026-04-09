@@ -21,7 +21,7 @@ test -d "$1" || { echo Error: directory $1 does not exist; exit 1; }
 test -x "$2" || { echo Error: $2 is not an executable; exit 1; }
 
 OPT=
-test -n "$CLANG" && OPT="--gcov-tool cov-clang.sh"
+test -n "$CLANG" && OPT="--rc lcov_branch_coverage=1 --gcov-tool cov-clang.sh"
 
 DIR=`dirname $0`
 test -n "$DIR" && export PATH=$PATH:$DIR
