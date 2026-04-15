@@ -1,3 +1,14 @@
+# DEPRECATED PROJECT - use https://github.com/AFLplusplus/cov-analysis instead
+
+**DEPRECATED**
+
+
+Please use this new better tooling instead: **[https://github.com/AFLplusplus/cov-analysis](https://github.com/AFLplusplus/cov-analysis)**
+
+
+**DEPRECATED**
+
+
 # coverage for libfuzzer
 
 libfuzzer is good but checking the coverage the tools are not as advanced as
